@@ -1,192 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- =========================
+       SalaryWizard — Landing
+       ========================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SalaryWizard – Smart Pay Calculator for Finnish Shift Workers</title>
-  <meta name="description" content="SalaryWizard helps Finnish shift workers calculate salaries, overtime, and bonuses automatically with full PAM compliance." />
-  <meta name="theme-color" content="#1A1A1A" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <title>SalaryWizard — Precision Pay for Finnish Shift Workers</title>
+  <meta name="description" content="SalaryWizard helps Finnish shift workers understand every euro: overtime, holiday pay, evening & night extras — accurate and transparent." />
+  <meta name="theme-color" content="#0c111b" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+
   <style>
-    :root {
-      --bg: #0f1116;
-      --card: #181b22;
-      --text: #f4f4f5;
-      --muted: #a1a1aa;
-      --accent: #5b7cff;
-      --radius: 18px;
+    /* ====== Design Tokens ====== */
+    :root{
+      --bg:#0c111b;            /* deep ink */
+      --bg-2:#0f1727;          /* surface */
+      --bg-3:#0b1220;          /* card */
+      --text:#f6f7fb;          /* on-dark text */
+      --muted:#b7c0d1;         /* secondary text */
+      --line:#1e2a43;          /* hairline */
+      --accent:#6ea8ff;        /* indigo/blue accent */
+      --accent-2:#52e0ff;      /* aqua accent for gradients */
+      --good:#7ce38b;
+      --warn:#ffd063;
+      --bad:#ff8a8a;
+      --radius:18px;
+      --shadow:0 12px 50px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 70% -10%, rgba(110,168,255,.18), transparent 60%),
+        radial-gradient(900px 500px at 10% 10%, rgba(82,224,255,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg-2) 30%, var(--bg));
+      letter-spacing:.2px;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* ====== Utilities ====== */
+    .container{max-width:1160px;margin:0 auto;padding:0 24px}
+    .grid{display:grid;gap:24px}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      color:var(--text);
+      padding:12px 18px;border-radius:12px;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      box-shadow:0 2px 0 rgba(255,255,255,.05) inset, 0 10px 30px rgba(0,0,0,.25);
+    }
+    .btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.2)}
+    .btn.primary{
+      background:linear-gradient(180deg, rgba(110,168,255,.25), rgba(110,168,255,.08));
+      border-color:rgba(110,168,255,.35);
+      box-shadow:0 2px 0 rgba(110,168,255,.35) inset, 0 18px 36px rgba(110,168,255,.18);
+    }
+    .badge{
+      display:inline-block;
+      font-size:.78rem;
+      padding:6px 10px;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(110,168,255,.18), rgba(82,224,255,.18));
+      border:1px solid rgba(110,168,255,.35);
+      color:#dbe7ff;
+    }
+    .muted{color:var(--muted)}
+    .hairline{border-top:1px solid var(--line)}
+    .rounded{border-radius:var(--radius)}
+    .shadow{box-shadow:var(--shadow)}
+    .mono{font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1}
+
+    /* ====== Animations ====== */
+    .fade-up{opacity:0;transform:translateY(16px);animation:fadeUp .8s ease forwards}
+    .fade-up.delay-1{animation-delay:.08s}
+    .fade-up.delay-2{animation-delay:.16s}
+    .fade-up.delay-3{animation-delay:.24s}
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+    .glow{
+      position:absolute;inset:-20% -10% auto -10%;
+      height:60vh;pointer-events:none;z-index:-1;
+      background:
+        radial-gradient(600px 220px at 20% 20%, rgba(110,168,255,.22), transparent 60%),
+        radial-gradient(700px 260px at 80% 10%, rgba(82,224,255,.2), transparent 60%),
+        radial-gradient(1000px 600px at 50% -10%, rgba(110,168,255,.12), transparent 60%);
+      filter:saturate(110%);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      line-height: 1.6;
+    /* ====== Header ====== */
+    .site-header{
+      position:sticky;top:0;backdrop-filter:saturate(140%) blur(10px);
+      background:linear-gradient(180deg, rgba(12,17,27,.9), rgba(12,17,27,.6) 60%, rgba(12,17,27,0));
+      border-bottom:1px solid rgba(255,255,255,.04);
+      z-index:20;
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      height:64px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px;
+    }
+    .logo-dot{
+      width:12px;height:12px;border-radius:4px;
+      background:linear-gradient(180deg, var(--accent), var(--accent-2));
+      box-shadow:0 0 24px rgba(110,168,255,.7);
+    }
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav a{color:var(--muted)}
+    .nav a:hover{color:var(--text)}
+
+    /* ====== Hero ====== */
+    .hero{
+      position:relative;
+      padding:72px 0 36px;
+      text-align:center;
+    }
+    .hero h1{
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height:1.1;margin:.2em 0 .3em;font-weight:900;
+      letter-spacing:-.02em;
+      background:linear-gradient(90deg,#eaf1ff, #bcd3ff 40%, #eaf1ff);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      filter:drop-shadow(0 4px 12px rgba(110,168,255,.1));
+    }
+    .hero p{
+      max-width:860px;margin:0 auto 26px;color:var(--muted);font-size:1.1rem;
+    }
+    .hero-cta{margin-top:18px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}
+
+    /* ====== Feature Cards ====== */
+    .feature-wrap{padding:26px 0 64px}
+    .feature-grid{
+      display:grid;gap:22px;
+      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+      margin-top:22px;
+    }
+    .feature{
+      position:relative;overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:var(--radius);padding:22px;
+      transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .feature:hover{transform:translateY(-3px);border-color:rgba(110,168,255,.35);box-shadow:0 18px 40px rgba(110,168,255,.14)}
+    .feature h3{margin:.2em 0 .3em}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:linear-gradient(90deg, rgba(110,168,255,.18), rgba(82,224,255,.18));
+      border:1px solid rgba(110,168,255,.3);font-size:.8rem;color:#dbe7ff
     }
 
-    header {
-      text-align: center;
-      padding: 100px 20px 80px;
-      background: radial-gradient(circle at top, #1e2230 0%, #0f1116 100%);
-      position: relative;
+    /* ====== Showcase / Screens ====== */
+    .showcase{
+      margin:30px 0 90px;
+      padding:28px 0 0;
+    }
+    .phone-row{
+      display:flex;gap:24px;justify-content:center;flex-wrap:wrap
+    }
+    .phone{
+      width:min(320px, 90vw);aspect-ratio:9/19;position:relative;border-radius:34px;
+      border:1px solid rgba(255,255,255,.1);
+      background:
+        radial-gradient(100% 60% at 50% 0, rgba(110,168,255,.10), transparent 40%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .notch{
+      position:absolute;left:50%;transform:translateX(-50%);
+      top:0;width:42%;height:26px;background:rgba(0,0,0,.6);
+      border-bottom-left-radius:16px;border-bottom-right-radius:16px;
+      box-shadow:inset 0 -2px 8px rgba(255,255,255,.06);
+    }
+    .screen{
+      position:absolute;inset:26px 10px 10px;border-radius:24px;overflow:hidden;
+      background:linear-gradient(180deg,#0e1422, #0c111b);
+      display:flex;align-items:center;justify-content:center;color:#eaf1ff;
+      font-weight:700;letter-spacing:.5px;text-transform:uppercase;font-size:.95rem
+    }
+    .screen .hint{position:absolute;bottom:14px;left:14px;right:14px;color:var(--muted);font-size:.8rem;text-transform:none;font-weight:500}
+
+    /* ====== Timeline / How It Works ====== */
+    .timeline{position:relative;padding:20px 0 14px;margin:10px 0 56px}
+    .timeline::before{
+      content:"";position:absolute;left:calc(50% - 1px);top:0;bottom:0;width:2px;background:linear-gradient(180deg, rgba(110,168,255,.35), transparent 80%)
+    }
+    .step{
+      display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;margin:20px 0
+    }
+    .step:nth-child(even) .card{order:2}
+    .step .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px
+    }
+    .step h4{margin:0 0 6px}
+    .step p{margin:0;color:var(--muted)}
+
+    @media (max-width:900px){
+      .step{grid-template-columns:1fr}
+      .timeline::before{left:24px}
     }
 
-    header::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 100%, rgba(91,124,255,0.08), transparent 70%);
-      z-index: 0;
+    /* ====== Contact ====== */
+    .contact{
+      background:linear-gradient(180deg, rgba(110,168,255,.06), rgba(110,168,255,.0));
+      border-top:1px solid rgba(255,255,255,.06);
+      padding:62px 0 78px
     }
+    form{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);padding:22px;border-radius:16px
+    }
+    .field{display:grid;gap:8px;margin:12px 0}
+    label{font-size:.92rem;color:#dfe7fa}
+    input,textarea{
+      width:100%;padding:14px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.1);
+      background-color:rgba(8,12,20,.66);color:var(--text);
+      outline:none;transition:border-color .15s ease, box-shadow .15s ease;
+      font-family:inherit
+    }
+    input:focus,textarea:focus{
+      border-color:rgba(110,168,255,.55);
+      box-shadow:0 0 0 4px rgba(110,168,255,.12)
+    }
+    textarea{min-height:140px;resize:vertical}
 
-    .logo {
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      background: linear-gradient(90deg, #5b7cff, #00c9ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      z-index: 1;
-      position: relative;
+    /* ====== Footer ====== */
+    .footer{
+      padding:28px 0 56px;color:var(--muted);
+      border-top:1px solid rgba(255,255,255,.06)
     }
-
-    .subtitle {
-      font-size: 1.2rem;
-      color: var(--muted);
-      margin-top: 14px;
-      max-width: 650px;
-      margin-inline: auto;
+    .footer-cols{
+      display:grid;gap:20px;grid-template-columns:2fr 1fr 1fr
     }
-
-    .cta {
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta a img {
-      height: 55px;
-      transition: transform 0.3s;
-    }
-
-    .cta a:hover img {
-      transform: scale(1.05);
-    }
-
-    section {
-      max-width: 1000px;
-      margin: 100px auto;
-      padding: 0 24px;
-      text-align: center;
-    }
-
-    h2 {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
-
-    p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 20px;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-      margin-top: 40px;
-    }
-
-    .feature {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 30px 24px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .feature:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 24px rgba(91,124,255,0.15);
-    }
-
-    .feature h3 {
-      margin-bottom: 12px;
-      color: var(--text);
-    }
-
-    footer {
-      text-align: center;
-      padding: 60px 20px 80px;
-      background: #0b0c0f;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      header { padding: 70px 20px 60px; }
-      .logo { font-size: 2.3rem; }
-      .subtitle { font-size: 1rem; }
-    }
+    .tiny{font-size:.86rem}
+    @media (max-width:800px){.footer-cols{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <header>
-    <h1 class="logo">SalaryWizard</h1>
-    <p class="subtitle">
-      A modern Finnish salary calculator designed for shift workers. Accurate, automated, and compliant with PAM agreements.
-    </p>
 
-    <div class="cta">
-      <a href="https://apps.apple.com/" target="_blank">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
-      </a>
-      <a href="https://play.google.com/store/apps" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
-      </a>
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <div class="brand">
+        <span class="logo-dot" aria-hidden="true"></span>
+        <span>SalaryWizard</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#showcase">Screens</a>
+        <a href="#how">How it works</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="#contact" class="btn">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <section id="features">
-    <h2>Why SalaryWizard?</h2>
-    <p>Everything you need to understand your pay — built with precision and care for Finnish shift workers.</p>
+  <!-- Decorative Glow -->
+  <div class="glow" aria-hidden="true"></div>
 
-    <div class="features">
-      <div class="feature">
-        <h3>💰 Accurate Pay Calculations</h3>
-        <p>Handles overtime, holiday bonuses, evening and night extras automatically.</p>
+  <!-- Hero -->
+  <section class="hero container">
+    <span class="badge fade-up">Built for Finland · PAM aware</span>
+    <h1 class="fade-up delay-1">Understand Every Euro You Earn</h1>
+    <p class="fade-up delay-2">
+      SalaryWizard turns complicated shifts into clear earnings — overtime, holiday pay, evening & night extras,
+      and lomaraha logic done for you. Private by design. Transparent by default.
+    </p>
+    <div class="hero-cta fade-up delay-3">
+      <a class="btn primary" href="#features" aria-label="Explore features">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Explore Features
+      </a>
+      <a class="btn" href="#contact" aria-label="Contact us">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="feature-wrap container">
+    <h2 class="fade-up">What makes SalaryWizard different?</h2>
+    <p class="muted fade-up delay-1">Engineered for Finnish shift work — clarity, accuracy, and peace of mind.</p>
+
+    <div class="feature-grid">
+      <article class="feature fade-up">
+        <span class="pill">Precision Engine</span>
+        <h3>Overtime & Public Holiday Logic</h3>
+        <p class="muted">Automates ×1.0/×1.5/×2.0 buckets, holiday eves from 15:00, and Sunday rules without double counting.</p>
+      </article>
+
+      <article class="feature fade-up delay-1">
+        <span class="pill">Real-world</span>
+        <h3>Evening & Night Extras</h3>
+        <p class="muted">Separates Mon–Sat from Sundays/red days, and handles aattolisä and aatto-iltalisä correctly.</p>
+      </article>
+
+      <article class="feature fade-up delay-2">
+        <span class="pill">Transparent</span>
+        <h3>Clear Monthly Details</h3>
+        <p class="muted">Breaks down earnings by action and leave type, with vacation payouts mapped to the correct payday.</p>
+      </article>
+
+      <article class="feature fade-up delay-3">
+        <span class="pill">Private</span>
+        <h3>Your Data, Your Rules</h3>
+        <p class="muted">Stored in Firebase, protected by per-user access rules. We don’t sell or share your data. Ever.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Screens / Showcase -->
+  <section id="showcase" class="showcase container">
+    <h2 class="fade-up">Screens that explain themselves</h2>
+    <p class="muted fade-up delay-1">A quick look at the core views. Replace these placeholders with your real screenshots when ready.</p>
+
+    <div class="phone-row">
+      <div class="phone fade-up">
+        <div class="notch"></div>
+        <div class="screen">
+          Summary
+          <div class="hint">Monthly buckets: base, overtime, extras, leaves, payouts</div>
+        </div>
       </div>
-      <div class="feature">
-        <h3>📅 Smart Shift Tracking</h3>
-        <p>Log shifts, breaks, and earnings effortlessly. All data syncs securely in Firebase.</p>
+      <div class="phone fade-up delay-1">
+        <div class="notch"></div>
+        <div class="screen">
+          Details
+          <div class="hint">Action breakdowns and clear per-row math</div>
+        </div>
       </div>
-      <div class="feature">
-        <h3>🔒 Secure by Design</h3>
-        <p>Your data belongs only to you. Protected by Google Firebase authentication and encryption.</p>
+      <div class="phone fade-up delay-2">
+        <div class="notch"></div>
+        <div class="screen">
+          Settings
+          <div class="hint">Hourly rate, tax %, extras — fully configurable</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer>
-    <p>© 2025 SalaryWizard · Made with ❤️ in Finland · <a href="privacy.html">Privacy Policy</a></p>
-    <p>Contact: <a href="mailto:salarywizard@gmail.com">salarywizard@gmail.com</a></p>
+  <!-- How it works / Timeline -->
+  <section id="how" class="container">
+    <h2 class="fade-up">How it works</h2>
+    <div class="timeline">
+      <div class="step fade-up">
+        <div class="card">
+          <h4>1 · Log your shifts</h4>
+          <p>Add start/end times and optional tags. Breaks? Overnight? We handle it.</p>
+        </div>
+        <div class="card">
+          <h4>2 · Policy engine</h4>
+          <p>The engine builds multiplier buckets and extras per calendar day (no Sunday stacking).</p>
+        </div>
+      </div>
+      <div class="step fade-up delay-1">
+        <div class="card">
+          <h4>3 · Leaves & payouts</h4>
+          <p>Leaves are capped when needed and vacation payouts appear on the correct payday.</p>
+        </div>
+        <div class="card">
+          <h4>4 · Crystal clear totals</h4>
+          <p>Gross and optional net with tax %, plus a per-action breakdown with euro math.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="fade-up">Contact us</h2>
+      <p class="muted fade-up delay-1">Questions, feedback, or partnership ideas? We’d love to hear from you.</p>
+
+      <!-- Working contact form via FormSubmit (no backend needed) -->
+      <form class="fade-up delay-2" action="https://formsubmit.co/salarywizard@gmail.com" method="POST">
+        <!-- FormSubmit controls -->
+        <input type="hidden" name="_subject" value="SalaryWizard Website — New Message" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="true" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+        <!-- Where to redirect after success (optional): -->
+        <input type="hidden" name="_next" value="https://yourusername.github.io/salarywizard-site/#thank-you" />
+
+        <div class="grid" style="grid-template-columns:1fr 1fr">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" placeholder="Jane Doe" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="jane@example.com" autocomplete="email" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" placeholder="I have a question about…" required />
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Write your message…" required></textarea>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:center;justify-content:flex-start;margin-top:6px">
+          <button class="btn primary" type="submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 2 11 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M22 2 15 22l-4-9-9-4 20-7Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Send message
+          </button>
+          <a class="btn" href="mailto:salarywizard@gmail.com">Or email us</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-cols">
+      <div>
+        <div class="brand" style="margin-bottom:12px">
+          <span class="logo-dot" aria-hidden="true"></span>
+          <strong>SalaryWizard</strong>
+        </div>
+        <p class="tiny">SalaryWizard helps Finnish shift workers understand exactly how earnings are built—overtime, holiday eves, Sundays, and extras—calculated with clarity.</p>
+      </div>
+      <div>
+        <p class="tiny"><a href="privacy.html">Privacy Policy</a></p>
+        <p class="tiny"><a href="#features">Features</a></p>
+        <p class="tiny"><a href="#how">How it works</a></p>
+        <p class="tiny"><a href="#contact">Contact</a></p>
+      </div>
+      <div>
+        <p class="tiny">Contact: <a href="mailto:salarywizard@gmail.com">salarywizard@gmail.com</a></p>
+        <p class="tiny">© 2025 SalaryWizard</p>
+      </div>
+    </div>
   </footer>
+
 </body>
 </html>
