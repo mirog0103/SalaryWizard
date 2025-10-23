@@ -1,81 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- =========================
+       SalaryWizard — Privacy
+       ========================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SalaryWizard – Privacy Policy</title>
+  <title>SalaryWizard — Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for SalaryWizard. We explain what data we collect, how we use it, and your rights under GDPR and app store policies." />
+  <meta name="theme-color" content="#0c111b" />
+  <meta name="color-scheme" content="dark" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #222;
-      line-height: 1.7;
-      max-width: 900px;
-      margin: auto;
-      padding: 50px 20px 80px;
-      background: #fafafa;
+    :root{
+      --bg:#0c111b;
+      --bg-2:#0f1727;
+      --card:#0b1220;
+      --text:#f6f7fb;
+      --muted:#b7c0d1;
+      --line:#1e2a43;
+      --accent:#6ea8ff;
+      --accent-2:#52e0ff;
+      --radius:18px;
     }
-    h1, h2 {
-      font-weight: 600;
-      color: #111;
+    *{box-sizing:border-box}
+    body{
+      margin:0;background:
+        radial-gradient(900px 500px at 20% 0%, rgba(110,168,255,.14), transparent 60%),
+        radial-gradient(1000px 520px at 80% -10%, rgba(82,224,255,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg-2) 30%, var(--bg));
+      color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      line-height:1.7;letter-spacing:.2px
     }
-    h1 { font-size: 2.4rem; margin-bottom: 24px; }
-    h2 { margin-top: 40px; font-size: 1.5rem; }
-    p, li { margin-bottom: 14px; font-size: 1.05rem; }
-    ul { padding-left: 20px; }
-    a { color: #5b7cff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a{color:var(--accent)}
+    header{
+      position:sticky;top:0;z-index:10;backdrop-filter:saturate(140%) blur(10px);
+      background:linear-gradient(180deg, rgba(12,17,27,.9), rgba(12,17,27,.4));
+      border-bottom:1px solid rgba(255,255,255,.06)
+    }
+    .container{max-width:960px;margin:0 auto;padding:0 22px}
+    .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:10px;align-items:center}
+    .dot{width:12px;height:12px;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-2));box-shadow:0 0 24px rgba(110,168,255,.7)}
+    main{padding:36px 0 80px}
+    h1{font-size: clamp(1.8rem, 3.2vw, 2.6rem);margin:.2em 0 .4em;letter-spacing:-.02em}
+    h2{margin:28px 0 8px;font-size:1.3rem}
+    p,li{color:var(--muted)}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);padding:20px;margin:16px 0
+    }
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:0 6px}
+    .list{padding-left:18px}
+    footer{
+      padding:30px 0 60px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted)
+    }
+    .badge{display:inline-block;font-size:.78rem;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(110,168,255,.18), rgba(82,224,255,.18));border:1px solid rgba(110,168,255,.35);color:#dbe7ff}
+    .fade-up{opacity:0;transform:translateY(16px);animation:fade .8s ease forwards}
+    @keyframes fade{to{opacity:1;transform:translateY(0)}}
   </style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
-  <p><strong>Last updated:</strong> October 2025</p>
 
-  <p>Welcome to SalaryWizard. Your privacy is important to us. This policy describes how we collect, use, and protect your information when you use our mobile application and related services.</p>
+<header>
+  <div class="container nav" role="navigation" aria-label="Secondary">
+    <div class="brand">
+      <span class="dot" aria-hidden="true"></span><strong>SalaryWizard</strong>
+    </div>
+    <nav><a href="index.html">Back to site</a></nav>
+  </div>
+</header>
 
-  <h2>1. About Us</h2>
-  <p><strong>App Name:</strong> SalaryWizard<br>
-     <strong>Developer:</strong> SalaryWizard Team<br>
-     <strong>Contact:</strong> <a href="mailto:salarywizard@gmail.com">salarywizard@gmail.com</a><br>
-     <strong>Location:</strong> Finland</p>
+<main class="container">
+  <span class="badge fade-up">Privacy Policy</span>
+  <h1 class="fade-up">Your privacy, explained clearly</h1>
+  <p class="fade-up">Last updated: October 2025</p>
 
-  <h2>2. Information We Collect</h2>
-  <ul>
-    <li><strong>Account Data:</strong> Your email address (via Firebase Authentication) for login and identity.</li>
-    <li><strong>Shift & Salary Data:</strong> Work hours, breaks, and pay data you manually input — stored privately in your Firebase account.</li>
-    <li><strong>Device Info:</strong> Non-personal technical data (device model, OS, app version) for app performance and crash prevention.</li>
-  </ul>
+  <section class="card fade-up">
+    <h2>1. Who we are</h2>
+    <p>SalaryWizard (“we”, “our”, or “us”) is a mobile app designed for Finnish shift workers. We help you understand your earnings with transparent, policy-aware calculations.</p>
+    <p>Contact: <a href="mailto:salarywizard@gmail.com">salarywizard@gmail.com</a></p>
+  </section>
 
-  <h2>3. Purpose of Use</h2>
-  <p>Your data is used only to provide app functionality: calculating pay, storing shifts, and syncing your settings across devices.</p>
+  <section class="card fade-up">
+    <h2>2. What data we collect</h2>
+    <ul class="list">
+      <li><strong>Account data:</strong> If you sign in, we store your email via Firebase Authentication.</li>
+      <li><strong>Shift & salary data:</strong> Information you enter (e.g., hours, actions, leave) to power calculations.</li>
+      <li><strong>Technical data:</strong> Non-personal info like device model, OS version, and app version to ensure reliability.</li>
+    </ul>
+  </section>
 
-  <h2>4. Data Security</h2>
-  <p>All information is stored securely in <strong>Google Firebase</strong> infrastructure with authentication and encryption. Only you have access to your data. Connections are always made over HTTPS.</p>
+  <section class="card fade-up">
+    <h2>3. Why we collect it</h2>
+    <p>We collect and process data solely to provide the app’s core features:</p>
+    <ul class="list">
+      <li>Authenticate your account and sync your data;</li>
+      <li>Compute your pay with correct multipliers and extras;</li>
+      <li>Maintain security, performance, and support.</li>
+    </ul>
+  </section>
 
-  <h2>5. Sharing of Data</h2>
-  <p>We do not sell, trade, or share your information with third parties. Firebase acts solely as a data processor under Google’s GDPR-compliant terms.</p>
+  <section class="card fade-up">
+    <h2>4. Legal basis (GDPR)</h2>
+    <p>If you are in the EU/EEA, we process data under one or more lawful bases:</p>
+    <ul class="list">
+      <li><strong>Consent:</strong> You choose to sign in and store your data.</li>
+      <li><strong>Contract:</strong> We provide the service you requested.</li>
+      <li><strong>Legitimate interest:</strong> Securing and improving the app.</li>
+    </ul>
+  </section>
 
-  <h2>6. Data Retention & Deletion</h2>
-  <p>Your information remains until you delete your account or request deletion. You may contact us to permanently erase your account data.</p>
+  <section class="card fade-up">
+    <h2>5. How we store and protect data</h2>
+    <p>Your data is stored in Google Firebase (Firestore, Authentication). Access is restricted by per-user security rules. All traffic uses HTTPS/TLS.</p>
+    <p>We do not sell or rent your data. We do not use third-party advertising SDKs.</p>
+  </section>
 
-  <h2>7. Legal Basis (GDPR)</h2>
-  <p>Under the General Data Protection Regulation (EU), processing is based on your consent and legitimate interest to provide you the service. You can withdraw consent anytime.</p>
+  <section class="card fade-up">
+    <h2>6. Sharing</h2>
+    <p>We don’t share your personal data with third parties except trusted infrastructure providers (Google Firebase) acting as processors. They operate under their own GDPR-compliant terms.</p>
+  </section>
 
-  <h2>8. Children’s Privacy</h2>
-  <p>SalaryWizard is not intended for users under 16 years of age. We do not knowingly collect data from minors.</p>
+  <section class="card fade-up">
+    <h2>7. Retention</h2>
+    <p>Your data remains associated with your account until you delete it or request deletion. If you stop using the app, you can contact us to remove stored data.</p>
+  </section>
 
-  <h2>9. Your Rights</h2>
-  <ul>
-    <li>Access and receive a copy of your data</li>
-    <li>Request correction or deletion</li>
-    <li>Withdraw consent for data processing</li>
-  </ul>
-  <p>Requests can be made via <a href="mailto:salarywizard@gmail.com">salarywizard@gmail.com</a>.</p>
+  <section class="card fade-up">
+    <h2>8. Your rights</h2>
+    <ul class="list">
+      <li>Access the data we hold about you;</li>
+      <li>Request correction or deletion;</li>
+      <li>Withdraw consent without affecting prior processing;</li>
+      <li>Lodge a complaint with your local data protection authority.</li>
+    </ul>
+    <p>To exercise your rights, email <a href="mailto:salarywizard@gmail.com">salarywizard@gmail.com</a>.</p>
+  </section>
 
-  <h2>10. Policy Updates</h2>
-  <p>This policy may be updated from time to time. The latest version will always be available at <a href="https://yourusername.github.io/salarywizard-site/privacy.html">this address</a>.</p>
+  <section class="card fade-up">
+    <h2>9. Children</h2>
+    <p>The app is not intended for users under 16. If a minor’s data has been submitted, contact us and we will delete it.</p>
+  </section>
 
-  <h2>11. Contact Us</h2>
-  <p>Questions or privacy concerns? Contact us at:<br>
-  <strong>Email:</strong> <a href="mailto:salarywizard@gmail.com">salarywizard@gmail.com</a></p>
+  <section class="card fade-up">
+    <h2>10. Cookies and local storage</h2>
+    <p>The mobile app may use on-device storage (e.g., <span class="kbd">SharedPreferences</span>) for preferences and offline caching. The marketing website may use basic, non-tracking cookies for performance or spam protection in forms.</p>
+  </section>
+
+  <section class="card fade-up">
+    <h2>11. International transfers</h2>
+    <p>Firebase may process data in data centers outside your country. Google applies safeguards consistent with GDPR and other applicable laws.</p>
+  </section>
+
+  <section class="card fade-up">
+    <h2>12. Third-party links</h2>
+    <p>Our website may link to third-party sites. We are not responsible for their privacy practices. Review their policies separately.</p>
+  </section>
+
+  <section class="card fade-up">
+    <h2>13. Changes to this policy</h2>
+    <p>We may update this policy from time to time. The latest version will always be published at this URL with the effective date indicated above.</p>
+  </section>
+
+  <section class="card fade-up">
+    <h2>14. Contact</h2>
+    <p>Email: <a href="mailto:salarywizard@gmail.com">salarywizard@gmail.com</a></p>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 SalaryWizard · <a href="index.html">Home</a></p>
+  </div>
+</footer>
+
 </body>
 </html>
