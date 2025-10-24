@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- =========================
-       SalaryWizard — Privacy
-       ========================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SalaryWizard — Privacy Policy</title>
@@ -12,73 +9,36 @@
   <meta name="color-scheme" content="dark" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
   <style>
-    :root{
-      --bg:#0c111b;
-      --bg-2:#0f1727;
-      --card:#0b1220;
-      --text:#f6f7fb;
-      --muted:#b7c0d1;
-      --line:#1e2a43;
-      --accent:#6ea8ff;
-      --accent-2:#52e0ff;
-      --ok:#2ecc71;
-      --warn:#f1c40f;
-      --danger:#ff5c7a;
-      --radius:18px;
-    }
+    :root{--bg:#0c111b;--bg-2:#0f1727;--card:#0b1220;--text:#f6f7fb;--muted:#b7c0d1;--line:#1e2a43;--accent:#6ea8ff;--accent-2:#52e0ff;--radius:18px}
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:
-        radial-gradient(900px 500px at 20% 0%, rgba(110,168,255,0.14), transparent 60%),
-        radial-gradient(1000px 520px at 80% -10%, rgba(82,224,255,0.12), transparent 60%),
-        linear-gradient(180deg, var(--bg), var(--bg-2) 30%, var(--bg));
-      color:var(--text);
-      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
-      line-height:1.7;letter-spacing:.2px
-    }
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    header{
-      position:sticky;top:0;z-index:10;backdrop-filter:saturate(140%) blur(10px);
-      background:linear-gradient(180deg, rgba(12,17,27,0.9), rgba(12,17,27,0.4));
-      border-bottom:1px solid rgba(255,255,255,0.06)
-    }
+    body{margin:0;background:
+      radial-gradient(900px 500px at 20% 0%, rgba(110,168,255,.14), transparent 60%),
+      radial-gradient(1000px 520px at 80% -10%, rgba(82,224,255,.12), transparent 60%),
+      linear-gradient(180deg, var(--bg), var(--bg-2) 30%, var(--bg));
+      color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica,sans-serif;line-height:1.7}
+    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+    header{position:sticky;top:0;z-index:10;backdrop-filter:saturate(140%) blur(10px);
+      background:linear-gradient(180deg, rgba(12,17,27,.9), rgba(12,17,27,.4));
+      border-bottom:1px solid rgba(255,255,255,.06)}
     .container{max-width:960px;margin:0 auto;padding:0 22px}
     .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
     .brand{display:flex;gap:10px;align-items:center}
-    .dot{width:12px;height:12px;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-2));box-shadow:0 0 24px rgba(110,168,255,0.7)}
+    .dot{width:12px;height:12px;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-2));box-shadow:0 0 24px rgba(110,168,255,.7)}
     main{padding:36px 0 80px}
-    h1{font-size: clamp(1.8rem, 3.2vw, 2.6rem);margin:.2em 0 .4em;letter-spacing:-.02em}
+    h1{font-size:clamp(1.8rem,3.2vw,2.6rem);margin:.2em 0 .4em;letter-spacing:-.02em}
     h2{margin:28px 0 8px;font-size:1.3rem}
     p,li{color:var(--muted)}
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:var(--radius);padding:20px;margin:16px 0
-    }
-    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:0 6px}
-    .list{padding-left:18px}
-    footer{
-      padding:30px 0 60px;border-top:1px solid rgba(255,255,255,0.06);color:var(--muted)
-    }
-    .badge{display:inline-block;font-size:.78rem;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(110,168,255,0.18), rgba(82,224,255,0.18));border:1px solid rgba(110,168,255,0.35);color:#dbe7ff}
-    .cta{
-      display:inline-flex;align-items:center;gap:10px;
-      margin-top:14px;padding:10px 14px;border-radius:12px;
-      background:linear-gradient(90deg, rgba(110,168,255,0.16), rgba(82,224,255,0.16));
-      border:1px solid rgba(110,168,255,0.35);color:#dbe7ff;font-weight:600
-    }
-    .cta:hover{transform:translateY(-1px)}
-    .note{font-size:.92rem;color:#cfe0ff;opacity:.9;margin-top:6px}
-    .grid{display:grid;grid-template-columns:1fr;gap:12px}
-    @media (min-width:720px){.grid{grid-template-columns:1fr 1fr}}
-    .pill{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.06);font-size:.78rem;color:#d7e3ff}
-    .ok{color:var(--ok)} .warn{color:var(--warn)} .danger{color:var(--danger)}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:20px;margin:16px 0}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:0 6px}
+    footer{padding:30px 0 60px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted)}
+    .badge{display:inline-block;font-size:.78rem;padding:6px 10px;border-radius:999px;
+      background:linear-gradient(90deg, rgba(110,168,255,.18), rgba(82,224,255,.18));
+      border:1px solid rgba(110,168,255,.35);color:#dbe7ff}
   </style>
 </head>
 <body>
-
 <header>
   <div class="container nav" role="navigation" aria-label="Secondary">
     <div class="brand">
@@ -96,13 +56,6 @@
   <h1>Your privacy, explained clearly</h1>
   <p>Last updated: October 2025</p>
 
-  <p>
-    <a class="cta" href="delete.html" aria-label="Go to account deletion instructions">
-      Delete account &amp; data
-    </a>
-    <span class="note">This link explains how to delete your account and all associated data.</span>
-  </p>
-
   <section class="card">
     <h2>1. Who we are</h2>
     <p>SalaryWizard (“we”, “our”, or “us”) is a mobile app designed for Finnish shift workers. We help you understand your earnings with transparent, policy-aware calculations.</p>
@@ -111,7 +64,7 @@
 
   <section class="card">
     <h2>2. What data we collect</h2>
-    <ul class="list">
+    <ul>
       <li><strong>Account data:</strong> If you sign in, we store your email via Firebase Authentication.</li>
       <li><strong>Shift &amp; salary data:</strong> Information you enter (e.g., hours, actions, leave) to power calculations.</li>
       <li><strong>Technical data:</strong> Non-personal info like device model, OS version, and app version to ensure reliability.</li>
@@ -120,8 +73,7 @@
 
   <section class="card">
     <h2>3. Why we collect it</h2>
-    <p>We collect and process data solely to provide the app’s core features:</p>
-    <ul class="list">
+    <ul>
       <li>Authenticate your account and sync your data;</li>
       <li>Compute your pay with correct multipliers and extras;</li>
       <li>Maintain security, performance, and support.</li>
@@ -130,8 +82,7 @@
 
   <section class="card">
     <h2>4. Legal basis (GDPR)</h2>
-    <p>If you are in the EU/EEA, we process data under one or more lawful bases:</p>
-    <ul class="list">
+    <ul>
       <li><strong>Consent:</strong> You choose to sign in and store your data.</li>
       <li><strong>Contract:</strong> We provide the service you requested.</li>
       <li><strong>Legitimate interest:</strong> Securing and improving the app.</li>
@@ -142,10 +93,6 @@
     <h2>5. How we store and protect data</h2>
     <p>Your data is stored in Google Firebase (Firestore, Authentication). Access is restricted by per-user security rules. All traffic uses HTTPS/TLS.</p>
     <p>We do not sell or rent your data. We do not use third-party advertising SDKs.</p>
-    <div class="grid">
-      <div><span class="pill">Encryption in transit</span> <span class="ok">Enabled</span></div>
-      <div><span class="pill">Third-party ads</span> <span class="danger">Not used</span></div>
-    </div>
   </section>
 
   <section class="card">
@@ -160,7 +107,7 @@
 
   <section class="card">
     <h2>8. Your rights</h2>
-    <ul class="list">
+    <ul>
       <li>Access the data we hold about you;</li>
       <li>Request correction or deletion;</li>
       <li>Withdraw consent without affecting prior processing;</li>
@@ -205,6 +152,5 @@
     <p>© 2025 SalaryWizard · <a href="index.html">Home</a> · <a href="delete.html">Delete account</a></p>
   </div>
 </footer>
-
 </body>
 </html>
