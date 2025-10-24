@@ -28,53 +28,52 @@
     }
     *{box-sizing:border-box}
     body{
-      margin:0;background:
-        radial-gradient(900px 500px at 20% 0%, rgba(110,168,255,.14), transparent 60%),
-        radial-gradient(1000px 520px at 80% -10%, rgba(82,224,255,.12), transparent 60%),
+      margin:0;
+      background:
+        radial-gradient(900px 500px at 20% 0%, rgba(110,168,255,0.14), transparent 60%),
+        radial-gradient(1000px 520px at 80% -10%, rgba(82,224,255,0.12), transparent 60%),
         linear-gradient(180deg, var(--bg), var(--bg-2) 30%, var(--bg));
-      color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      color:var(--text);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
       line-height:1.7;letter-spacing:.2px
     }
-    a{color:var(--accent)}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
     header{
       position:sticky;top:0;z-index:10;backdrop-filter:saturate(140%) blur(10px);
-      background:linear-gradient(180deg, rgba(12,17,27,.9), rgba(12,17,27,.4));
-      border-bottom:1px solid rgba(255,255,255,.06)
+      background:linear-gradient(180deg, rgba(12,17,27,0.9), rgba(12,17,27,0.4));
+      border-bottom:1px solid rgba(255,255,255,0.06)
     }
     .container{max-width:960px;margin:0 auto;padding:0 22px}
     .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
     .brand{display:flex;gap:10px;align-items:center}
-    .dot{width:12px;height:12px;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-2));box-shadow:0 0 24px rgba(110,168,255,.7)}
+    .dot{width:12px;height:12px;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-2));box-shadow:0 0 24px rgba(110,168,255,0.7)}
     main{padding:36px 0 80px}
     h1{font-size: clamp(1.8rem, 3.2vw, 2.6rem);margin:.2em 0 .4em;letter-spacing:-.02em}
     h2{margin:28px 0 8px;font-size:1.3rem}
     p,li{color:var(--muted)}
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.08);
       border-radius:var(--radius);padding:20px;margin:16px 0
     }
-    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:0 6px}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:0 6px}
     .list{padding-left:18px}
     footer{
-      padding:30px 0 60px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted)
+      padding:30px 0 60px;border-top:1px solid rgba(255,255,255,0.06);color:var(--muted)
     }
-    .badge{display:inline-block;font-size:.78rem;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(110,168,255,.18), rgba(82,224,255,.18));border:1px solid rgba(110,168,255,.35);color:#dbe7ff}
+    .badge{display:inline-block;font-size:.78rem;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(110,168,255,0.18), rgba(82,224,255,0.18));border:1px solid rgba(110,168,255,0.35);color:#dbe7ff}
     .cta{
       display:inline-flex;align-items:center;gap:10px;
       margin-top:14px;padding:10px 14px;border-radius:12px;
-      background:linear-gradient(90deg, rgba(110,168,255,.16), rgba(82,224,255,.16));
-      border:1px solid rgba(110,168,255,.35);color:#dbe7ff;text-decoration:none;font-weight:600
+      background:linear-gradient(90deg, rgba(110,168,255,0.16), rgba(82,224,255,0.16));
+      border:1px solid rgba(110,168,255,0.35);color:#dbe7ff;font-weight:600
     }
     .cta:hover{transform:translateY(-1px)}
-    .note{
-      font-size:.92rem;color:#cfe0ff;opacity:.9;margin-top:6px
-    }
-    .fade-up{opacity:0;transform:translateY(16px);animation:fade .8s ease forwards}
-    @keyframes fade{to{opacity:1;transform:translateY(0)}}
+    .note{font-size:.92rem;color:#cfe0ff;opacity:.9;margin-top:6px}
     .grid{display:grid;grid-template-columns:1fr;gap:12px}
     @media (min-width:720px){.grid{grid-template-columns:1fr 1fr}}
-    .pill{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);font-size:.78rem;color:#d7e3ff}
+    .pill{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.06);font-size:.78rem;color:#d7e3ff}
     .ok{color:var(--ok)} .warn{color:var(--warn)} .danger{color:var(--danger)}
   </style>
 </head>
@@ -93,25 +92,24 @@
 </header>
 
 <main class="container">
-  <span class="badge fade-up">Privacy Policy</span>
-  <h1 class="fade-up">Your privacy, explained clearly</h1>
-  <p class="fade-up">Last updated: October 2025</p>
+  <span class="badge">Privacy Policy</span>
+  <h1>Your privacy, explained clearly</h1>
+  <p>Last updated: October 2025</p>
 
-  <!-- Quick-access deletion button for Play Store listing -->
-  <p class="fade-up">
+  <p>
     <a class="cta" href="delete.html" aria-label="Go to account deletion instructions">
-      🗑️ Delete account & data
+      Delete account &amp; data
     </a>
-    <span class="note">This link explains how to request deletion of your account and all associated data.</span>
+    <span class="note">This link explains how to delete your account and all associated data.</span>
   </p>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>1. Who we are</h2>
     <p>SalaryWizard (“we”, “our”, or “us”) is a mobile app designed for Finnish shift workers. We help you understand your earnings with transparent, policy-aware calculations.</p>
     <p>Contact: <a href="mailto:salarywizard@gmail.com">salarywizard@gmail.com</a></p>
   </section>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>2. What data we collect</h2>
     <ul class="list">
       <li><strong>Account data:</strong> If you sign in, we store your email via Firebase Authentication.</li>
@@ -120,7 +118,7 @@
     </ul>
   </section>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>3. Why we collect it</h2>
     <p>We collect and process data solely to provide the app’s core features:</p>
     <ul class="list">
@@ -130,7 +128,7 @@
     </ul>
   </section>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>4. Legal basis (GDPR)</h2>
     <p>If you are in the EU/EEA, we process data under one or more lawful bases:</p>
     <ul class="list">
@@ -140,7 +138,7 @@
     </ul>
   </section>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>5. How we store and protect data</h2>
     <p>Your data is stored in Google Firebase (Firestore, Authentication). Access is restricted by per-user security rules. All traffic uses HTTPS/TLS.</p>
     <p>We do not sell or rent your data. We do not use third-party advertising SDKs.</p>
@@ -150,17 +148,17 @@
     </div>
   </section>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>6. Sharing</h2>
     <p>We don’t share your personal data with third parties except trusted infrastructure providers (Google Firebase) acting as processors. They operate under their own GDPR-compliant terms.</p>
   </section>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>7. Retention</h2>
     <p>Your data remains associated with your account until you delete it or request deletion. If you stop using the app, you can contact us to remove stored data.</p>
   </section>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>8. Your rights</h2>
     <ul class="list">
       <li>Access the data we hold about you;</li>
@@ -171,32 +169,32 @@
     <p>To exercise your rights, email <a href="mailto:salarywizard@gmail.com">salarywizard@gmail.com</a>.</p>
   </section>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>9. Children</h2>
     <p>The app is not intended for users under 16. If a minor’s data has been submitted, contact us and we will delete it.</p>
   </section>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>10. Cookies and local storage</h2>
     <p>The mobile app may use on-device storage (e.g., <span class="kbd">SharedPreferences</span>) for preferences and offline caching. The marketing website may use basic, non-tracking cookies for performance or spam protection in forms.</p>
   </section>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>11. International transfers</h2>
     <p>Firebase may process data in data centers outside your country. Google applies safeguards consistent with GDPR and other applicable laws.</p>
   </section>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>12. Third-party links</h2>
     <p>Our website may link to third-party sites. We are not responsible for their privacy practices. Review their policies separately.</p>
   </section>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>13. Changes to this policy</h2>
     <p>We may update this policy from time to time. The latest version will always be published at this URL with the effective date indicated above.</p>
   </section>
 
-  <section class="card fade-up">
+  <section class="card">
     <h2>14. Contact</h2>
     <p>Email: <a href="mailto:salarywizard@gmail.com">salarywizard@gmail.com</a></p>
   </section>
