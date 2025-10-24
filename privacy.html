@@ -21,6 +21,9 @@
       --line:#1e2a43;
       --accent:#6ea8ff;
       --accent-2:#52e0ff;
+      --ok:#2ecc71;
+      --warn:#f1c40f;
+      --danger:#ff5c7a;
       --radius:18px;
     }
     *{box-sizing:border-box}
@@ -57,8 +60,22 @@
       padding:30px 0 60px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted)
     }
     .badge{display:inline-block;font-size:.78rem;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(110,168,255,.18), rgba(82,224,255,.18));border:1px solid rgba(110,168,255,.35);color:#dbe7ff}
+    .cta{
+      display:inline-flex;align-items:center;gap:10px;
+      margin-top:14px;padding:10px 14px;border-radius:12px;
+      background:linear-gradient(90deg, rgba(110,168,255,.16), rgba(82,224,255,.16));
+      border:1px solid rgba(110,168,255,.35);color:#dbe7ff;text-decoration:none;font-weight:600
+    }
+    .cta:hover{transform:translateY(-1px)}
+    .note{
+      font-size:.92rem;color:#cfe0ff;opacity:.9;margin-top:6px
+    }
     .fade-up{opacity:0;transform:translateY(16px);animation:fade .8s ease forwards}
     @keyframes fade{to{opacity:1;transform:translateY(0)}}
+    .grid{display:grid;grid-template-columns:1fr;gap:12px}
+    @media (min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+    .pill{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);font-size:.78rem;color:#d7e3ff}
+    .ok{color:var(--ok)} .warn{color:var(--warn)} .danger{color:var(--danger)}
   </style>
 </head>
 <body>
@@ -68,7 +85,9 @@
     <div class="brand">
       <span class="dot" aria-hidden="true"></span><strong>SalaryWizard</strong>
     </div>
-    <nav><a href="index.html">Back to site</a></nav>
+    <nav>
+      <a href="index.html">Back to site</a>
+    </nav>
   </div>
 </header>
 
@@ -76,6 +95,14 @@
   <span class="badge fade-up">Privacy Policy</span>
   <h1 class="fade-up">Your privacy, explained clearly</h1>
   <p class="fade-up">Last updated: October 2025</p>
+
+  <!-- Quick-access deletion button for Play Store listing -->
+  <p class="fade-up">
+    <a class="cta" href="#delete" aria-label="Go to account deletion instructions">
+      🗑️ Delete account & data
+    </a>
+    <span class="note">This link explains how to request deletion of your account and all associated data.</span>
+  </p>
 
   <section class="card fade-up">
     <h2>1. Who we are</h2>
@@ -87,7 +114,7 @@
     <h2>2. What data we collect</h2>
     <ul class="list">
       <li><strong>Account data:</strong> If you sign in, we store your email via Firebase Authentication.</li>
-      <li><strong>Shift & salary data:</strong> Information you enter (e.g., hours, actions, leave) to power calculations.</li>
+      <li><strong>Shift &amp; salary data:</strong> Information you enter (e.g., hours, actions, leave) to power calculations.</li>
       <li><strong>Technical data:</strong> Non-personal info like device model, OS version, and app version to ensure reliability.</li>
     </ul>
   </section>
@@ -116,6 +143,10 @@
     <h2>5. How we store and protect data</h2>
     <p>Your data is stored in Google Firebase (Firestore, Authentication). Access is restricted by per-user security rules. All traffic uses HTTPS/TLS.</p>
     <p>We do not sell or rent your data. We do not use third-party advertising SDKs.</p>
+    <div class="grid">
+      <div><span class="pill">Encryption in transit</span> <span class="ok">Enabled</span></div>
+      <div><span class="pill">Third-party ads</span> <span class="danger">Not used</span></div>
+    </div>
   </section>
 
   <section class="card fade-up">
@@ -168,11 +199,31 @@
     <h2>14. Contact</h2>
     <p>Email: <a href="mailto:salarywizard@gmail.com">salarywizard@gmail.com</a></p>
   </section>
+
+  <!-- NEW: Data & Account Deletion section for Play Console compliance -->
+  <section id="delete" class="card fade-up" aria-labelledby="delete-heading">
+    <h2 id="delete-heading">15. Data &amp; Account Deletion</h2>
+    <p>If you would like to delete your SalaryWizard account and all associated data, please email <a href="mailto:salarywizard@gmail.com?subject=Account%20deletion%20request">salarywizard@gmail.com</a> with the subject line <strong>“Account deletion request”</strong>. You can also include your registered email address in the message body to help us locate your account.</p>
+    <h3>What will be deleted</h3>
+    <ul class="list">
+      <li><strong>Firebase Authentication account</strong> (your sign-in identity).</li>
+      <li><strong>Firestore data</strong> (shift history, salary settings, preferences) linked to your account.</li>
+    </ul>
+    <h3>What may be temporarily retained</h3>
+    <ul class="list">
+      <li><strong>Backups and security logs</strong> may be retained for up to <strong>30 days</strong> for fraud prevention, security, and legal compliance, after which they are automatically erased.</li>
+    </ul>
+    <h3>How long it takes</h3>
+    <ul class="list">
+      <li>We aim to complete deletion within <strong>7 days</strong> of verifying your request.</li>
+    </ul>
+    <p class="note">If you accidentally sent a request, contact us immediately to cancel before deletion is finalized.</p>
+  </section>
 </main>
 
 <footer>
   <div class="container">
-    <p>© 2025 SalaryWizard · <a href="index.html">Home</a></p>
+    <p>© 2025 SalaryWizard · <a href="index.html">Home</a> · <a href="#delete">Delete account</a></p>
   </div>
 </footer>
 
