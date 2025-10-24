@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SalaryWizard — Delete Account</title>
+  <meta name="description" content="How to delete your SalaryWizard account and data." />
+  <meta name="theme-color" content="#0c111b" />
+  <meta name="color-scheme" content="dark" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0c111b;--bg2:#0f1727;--card:#0b1220;--text:#f6f7fb;--muted:#b7c0d1;--line:#1e2a43;--accent:#6ea8ff;--accent2:#52e0ff;--ok:#7ce38b;--warn:#ffd063;--bad:#ff8a8a;--r:18px}
+    *{box-sizing:border-box} body{margin:0;background:
+      radial-gradient(900px 500px at 20% 0%, rgba(110,168,255,.14), transparent 60%),
+      radial-gradient(1000px 520px at 80% -10%, rgba(82,224,255,.12), transparent 60%),
+      linear-gradient(180deg, var(--bg), var(--bg2) 30%, var(--bg)); color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;line-height:1.7}
+    a{color:var(--accent)} .container{max-width:960px;margin:0 auto;padding:0 22px}
+    header{position:sticky;top:0;z-index:10;backdrop-filter:saturate(140%) blur(10px);
+      background:linear-gradient(180deg, rgba(12,17,27,.9), rgba(12,17,27,.4));border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:10px;align-items:center}.dot{width:12px;height:12px;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent2));box-shadow:0 0 24px rgba(110,168,255,.7)}
+    main{padding:36px 0 80px} h1{font-size:clamp(1.9rem,3.4vw,2.6rem);margin:.2em 0 .4em;letter-spacing:-.02em}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:20px;margin:16px 0}
+    .list{padding-left:18px} .pill{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);font-size:.78rem;color:#d7e3ff}
+    .note{color:var(--muted);font-size:.95rem} .warn{color:var(--warn)} .bad{color:var(--bad)}
+    footer{padding:30px 0 60px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="brand"><span class="dot" aria-hidden="true"></span><strong>SalaryWizard</strong></div>
+    <nav>
+      <a href="index.html">Home</a> ·
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <span class="pill">Account & Data Deletion</span>
+  <h1>Delete your account and data</h1>
+  <p class="note">This page explains how to permanently delete your SalaryWizard account and associated data, or request partial deletion.</p>
+
+  <section class="card">
+    <h2>Delete account in the app (instant)</h2>
+    <ol class="list">
+      <li>Open <strong>SalaryWizard</strong>.</li>
+      <li>Go to <strong>Menu → Profile</strong>.</li>
+      <li>Tap <strong>Delete account</strong>.</li>
+      <li>Answer the <strong>security questions</strong> to confirm.</li>
+    </ol>
+    <p class="note">This permanently deletes your Firebase Authentication account and all Firestore data linked to it. <span class="bad"><strong>Cannot be undone.</strong></span></p>
+  </section>
+
+  <section class="card">
+    <h2>Keep account, delete stored data (by email)</h2>
+    <p>Email <a href="mailto:salarywizard@gmail.com?subject=Data%20deletion%20(keep%20account)">salarywizard@gmail.com</a> with subject <strong>“Data deletion (keep account)”</strong> and include your registered email address.</p>
+  </section>
+
+  <section class="card">
+    <h2>Timing & limited retention</h2>
+    <ul class="list">
+      <li>In-app account deletion is processed immediately in our systems.</li>
+      <li>Email requests are completed within <strong>7 days</strong> after verification.</li>
+      <li>Backups/security logs may be retained up to <strong>30 days</strong> for fraud prevention and legal compliance, then are purged.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Questions?</h2>
+    <p>Contact us at <a href="mailto:salarywizard@gmail.com">salarywizard@gmail.com</a>.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 SalaryWizard · <a href="index.html">Home</a> · <a href="privacy.html">Privacy Policy</a></p>
+  </div>
+</footer>
+</body>
+</html>
